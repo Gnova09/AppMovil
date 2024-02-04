@@ -6,7 +6,7 @@ export const PerfilLogo = () => {
         <View>
             <Image
                 style={styles.logo}
-                source={require('../../assets/fb.png')}
+                source={require('../../assets/profile.jpg')}
             />
         </View>
     )

@@ -1,9 +1,34 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { Text, View, StyleSheet, Button, Alert } from "react-native";
 import { PerfilLogo } from '../Components/PerfilLogo';
+import { Sumadora } from './Sumadora';
+import { Traductor } from './Traductor';
+import { Tabla } from './Tabla';
+import { Experiencia } from './Experiencia';
 
-export const Principal = () => {
-    const [view, setview] = useState("Principal")
+export const Principal = ({ view }) => {
+
+    const RenderizarComponente = () => {
+        switch (view) {
+            case 1:
+                return <Sumadora />;
+
+            case 2:
+                return <Traductor />;
+
+            case 3:
+                return < View></View>;
+
+            case 4:
+                return < Tabla />;
+
+            case 5:
+                return < Experiencia />;
+
+
+        }
+    }
+
     return (
         <View style={styles.container}>
             <PerfilLogo />
@@ -17,35 +42,13 @@ export const Principal = () => {
                 {/* Correo */}
                 <View style={styles.SubContainer} >
                     <Text style={styles.text} > Correo: </Text>
-                    <Text style={styles.SmallText} >Georges.Bueno@hotmail.com </Text>
+                    <Text style={styles.SmallText} >20198412@itla.edu.do </Text>
                 </View>
             </View>
 
-            <View style={styles.SubContainer} >
-                {/* Sumadora */}
-                <Button
-                    title="Sumadora"
-                    onPress={() => setview('Sumadora')}
-                />
-                {/* Traductor */}
-                <Button
-                    title="Traductor"
-                    onPress={() => setview('Traductor')}
-                />
-                {/* Tabla */}
-                <Button
-                    title="Tabla"
-                    onPress={() => setview('Tabla')}
-                />
-                {/* Experiencia */}
-                <Button
-                style={ styles.Btn}
-                    title="Exp"
-                    onPress={() => setview('Exp')}
-                />
-            </View>
+            <RenderizarComponente />
 
-            <Text>{view}</Text>
+          
         </View>
     )
 }
@@ -69,7 +72,7 @@ const styles = StyleSheet.create({
     SmallText: {
         fontSize: 16
     },
-    Btn:{
+    Btn: {
         borderRadius: 5,
         overflow: "hidden"
 
